@@ -17,5 +17,12 @@ elif username == "customer":
     else:
         print("Incorrect Password")
 
+elif username == "cashier":
+    if password == "cash123":
+        print("Welcome Cashier")
+        print("Access: Payment Processing")
+    else:
+        print("Incorrect Password")        
+
 else:
     print("User does not exist")
