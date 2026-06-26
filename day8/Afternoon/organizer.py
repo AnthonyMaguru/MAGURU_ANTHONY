@@ -1,24 +1,29 @@
-import os
+from pathlib import Path
 import shutil
 
-folder_path = r"C:\Users\user\Downloads" 
+# Folder to organize
+folder_path = Path(r"C:\Users\user\Downloads")
 
-for file in os.listdir(folder_path):
-    file_path = os.path.join(folder_path, file)
+# Loop through every item in the folder
+for item in folder_path.iterdir():
 
-    # Skip folders
-    if os.path.isdir(file_path):
+    # Skip directories (only organize files)
+    if item.is_dir():
         continue
 
-    # Get extension
-    extension = os.path.splitext(file)[1].lower()
+    # Get the file extension (e.g., '.pdf', '.jpg')
+    extension = item.suffix.lower()
 
+    # Ignore files without an extension
     if extension:
-        # Create folder with extension name
-        ext_folder = os.path.join(folder_path, extension[1:].upper())
 
-        if not os.path.exists(ext_folder):
-            os.mkdir(ext_folder)
+        # Create a folder named after the extension
+        extension_folder = folder_path / extension[1:].upper()
 
-        # Move file
-        shutil.move(file_path, os.path.join(ext_folder, file))
+        # Create the folder if it doesn't exist
+        extension_folder.mkdir(exist_ok=True)
+
+        # Move the file into the extension folder
+        shutil.move(str(item), str(extension_folder / item.name))
+
+print("Files have been organized successfully!")
