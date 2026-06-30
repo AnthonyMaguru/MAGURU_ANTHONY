@@ -1,0 +1,103 @@
+# Student Record Management System Report
+
+#1. Introduction
+
+The Student Record Management System is a menu driven Python application developed to manage student records efficiently. The project demonstrates the practical application of Python programming concepts, including file handling, exception handling, logging, input validation, and modular programming. The system enables users to perform common record management operations such as adding, viewing, searching, updating, and deleting student records through a simple text-based interface.
+
+The application stores basic student information in a CSV file while maintaining additional details in a JSON file. This approach demonstrates the use of multiple file formats for data storage and retrieval in Python.
+
+---
+
+2. Program Design
+
+The system is divided into several functions, each responsible for a specific task. This modular design improves readability, maintainability, and code reusability.
+
+The main functions implemented include:
+
+* **initialize_files()** – Creates the CSV and JSON files if they do not already exist.
+* **load_students()** – Reads student records from the CSV file.
+* **save_students()** – Writes updated student records back to the CSV file.
+* **load_details()** – Reads additional student information from the JSON file.
+* **save_details()** – Saves updated JSON data.
+* **add_student()** – Adds a new student to both storage files.
+* **view_students()** – Displays all student records together with their additional details.
+* **search_student()** – Searches for a student using the registration number.
+* **update_student()** – Updates an existing student's information.
+* **delete_student()** – Removes a student's record from both the CSV and JSON files.
+* **menu()** – Provides the user with a menu-driven interface to access all system functions.
+
+The CSV file stores the following fields:
+
+-Registration Number
+-Name
+-Gender
+-Age
+-Score
+
+The JSON file stores additional information such as:
+
+-Address
+-Contact Number
+-Academic Program
+
+Separating the data into two file formats demonstrates how different storage methods can be used within the same application.
+
+---
+
+3. Exception Handling Strategy
+
+To improve system reliability, comprehensive exception handling was implemented throughout the application. Most operations are enclosed within **try-except-finally** blocks to prevent the program from crashing due to unexpected errors.
+
+A custom exception named **StudentNotFoundError** was created to handle situations where a user searches for, updates, or deletes a student who does not exist in the system. Instead of terminating the program, the exception displays an informative error message and allows the application to continue running.
+
+The program also handles common errors such as:
+
+-Missing files
+- Invalid menu selections
+- Duplicate registration numbers
+- Unexpected runtime errors
+
+The finally block is used where appropriate to ensure that cleanup actions or completion messages are executed regardless of whether an exception occurs.
+
+---
+
+4. Logging
+
+The Python **logging** module was used to maintain a record of user activities and system events. Every major operation performed by the user is recorded in **student_system.log**, including:
+
+-Adding new students
+- Viewing records
+- Searching for students
+- Updating records
+- Deleting students
+- Invalid menu choices
+- Program termination
+- System errors and exceptions
+
+Logging provides an audit trail that can be useful for debugging, monitoring application usage, and troubleshooting errors without interrupting the user experience.
+
+---
+
+5. Testing and Results
+
+The application was tested using different scenarios to ensure that all functions operated correctly. The following tests were performed successfully:
+
+- Adding new student records
+- Displaying all stored students
+- Searching for existing students
+- Searching for non-existent students
+- Updating student information
+- Deleting student records
+- Entering invalid menu options
+- Automatic creation of missing CSV and JSON files
+- Logging of user activities and system errors
+
+The test results confirmed that the application performs all required operations accurately while handling errors gracefully.
+
+---
+
+6. Conclusion
+
+The Student Record Management System successfully meets the objectives of the assignment by integrating multiple Python programming concepts into a single application. The project demonstrates the use of CSV and JSON file handling, modular programming, custom exceptions, logging, and structured error handling using **try**, **except**, and **finally**.
+
+The system is easy to use, reliable, and can be extended in the future with additional features such as student grades, GPA calculation, authentication, graphical user interfaces, or database integration. Overall, the project provided valuable practical experience in developing a complete file-based management system using Python.
