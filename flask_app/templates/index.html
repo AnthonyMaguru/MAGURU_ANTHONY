@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Welcome to our Flask application!</h1>
+    <p>This is the home page of our Flask application.</p>
+    <p>Navigate to the <a href="{{ url_for('profile', username='John', user_id=1) }}">Profile</a> page to see dynamic routing in action.</p>
+    <p>Navigate to the <a href="{{ url_for('about') }}">About</a> page to learn more about our application.</p>
+    <p>Navigate to the <a href="{{ url_for('contact') }}">Contact</a> page to get in touch with us.</p>
+</body>
+</html>
