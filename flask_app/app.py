@@ -1,5 +1,5 @@
 # import flask
-from flask import Flask render_templates
+from flask import Flask, render_template
 
 # create an instance of a flask class
 # "__name__" is a special variable that tells Flask where to look for resources
@@ -29,11 +29,10 @@ def mystory(story):
     return f'<h1>My Story: {story}</h1>'
 
 # profile Create Dynamic Route: /profile/<username>
-@app.route('/profile/<username>')
-
-def profile(username,user_id):
-    # Data passed  from python function to HTML template
-    return render_template('profile.html', username=username, user_id= user_id)
+@app.route('/profile/<username>/<int:user_id>')
+def profile(username, user_id):
+    # Data passed from python function to HTML template
+    return render_template('profile.html', username=username, user_id=user_id)
 
 # Template inheritance: base.html
 
