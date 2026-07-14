@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}{{ 'Edit Student - Student Information System' if is_edit else 'Register - Student Information System' }}{% endblock %}
+
+{% block content %}
+    <section class="register-page">
+        <h2>{{ 'Edit Student Details' if is_edit else 'Student Registration Form' }}</h2>
+        <div class="form-container">
+            <form method="POST" action="{{ url_for('edit_student', student_id=student.id) if is_edit else url_for('register') }}" class="registration-form">
+                <div class="form-group">
+                    <label for="student_name">Student Name *</label>
+                    <input type="text" id="student_name" name="student_name"
+                           placeholder="Enter your full name"
+                           value="{{ form_data.student_name if form_data else '' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registration_number">Registration Number *</label>
+                    <input type="text" id="registration_number" name="registration_number"
+                           placeholder="e.g., 24/U/001"
+                           value="{{ form_data.registration_number if form_data else '' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="you@students.mak.ac.ug"
+                           value="{{ form_data.email if form_data else '' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="programme">Programme of Study *</label>
+                    <select id="programme" name="programme" required>
+                        <option value="" {% if not form_data or not form_data.programme %}selected{% endif %}>Select your programme</option>
+                        <option value="Computer Science" {% if form_data and form_data.programme == 'Computer Science' %}selected{% endif %}>Computer Science</option>
+                        <option value="Information Technology" {% if form_data and form_data.programme == 'Information Technology' %}selected{% endif %}>Information Technology</option>
+                        <option value="Software Engineering" {% if form_data and form_data.programme == 'Software Engineering' %}selected{% endif %}>Software Engineering</option>
+                        <option value="Data Science" {% if form_data and form_data.programme == 'Data Science' %}selected{% endif %}>Data Science</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">{{ 'Update Student' if is_edit else 'Register Student' }}</button>
+                    <button type="reset" class="btn btn-secondary">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Student - Student Information System{% endblock %}
+
+{% block content %}
+	<section class="confirmation-page">
+		<h2>Delete Student</h2>
+		<div class="confirmation-card">
+			<div class="confirmation-header">
+				<h3>Confirm Student Deletion</h3>
+				<p>This will remove the student from the active student list.</p>
+			</div>
+
+			<div class="student-details">
+				<div class="detail-item">
+					<span class="detail-label">Student Name:</span>
+					<span class="detail-value">{{ student.student_name }}</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Registration Number:</span>
+					<span class="detail-value">{{ student.registration_number }}</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Email Address:</span>
+					<span class="detail-value">{{ student.email }}</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Programme:</span>
+					<span class="detail-value">{{ student.programme }}</span>
+				</div>
+			</div>
+
+			<form method="POST" action="{{ url_for('delete_student', student_id=student.id) }}" class="confirmation-actions">
+				<a href="{{ url_for('students_list') }}" class="btn btn-secondary">Cancel</a>
+				<button type="submit" class="btn btn-danger">Delete Student</button>
+			</form>
+		</div>
+	</section>
+{% endblock %}
